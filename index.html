@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT JO - المنصة الأولى لتداول العملات الرقمية</title>
+    
+    <meta property="og:title" content="USDT JO - المنصة الأولى لتداول العملات الرقمية">
+    <meta property="og:description" content="منصتك الآمنة والموثوقة لشراء وبيع عملات الـ USDT بأفضل الأسعار وبسرعة فائقة.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1000&auto=format&fit=crop">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Cairo', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: #fff;
+            border-radius: 50px; text-align: center; font-size: 28px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- زر الواتساب العائم -->
+    <a id="whatsappBtn" href="https://wa.me/963900000000" target="_blank" class="whatsapp-float" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- شريط التنقل العلوي -->
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-gradient-to-tr from-emerald-500 to-teal-400 p-2.5 rounded-xl shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-bolt-lightning text-slate-950 text-xl font-bold"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wide bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">USDT JO</span>
+                    <span class="block text-xs text-slate-400">بوابتك الموثوقة لعالم الكريبتو</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 space-x-reverse text-sm font-medium">
+                <a href="index.html" class="text-emerald-400 hover:text-emerald-300 transition">الرئيسية</a>
+                <a href="#ads" class="text-slate-300 hover:text-emerald-300 transition">العروض الخاصة</a>
+                <a href="login.html" id="authNavBtn" class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-xl hover:bg-emerald-500/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-user"></i> <span id="authNavText">تسجيل الدخول</span>
+                </a>
+                <a href="admin.html" class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-gauge-high text-emerald-400"></i> لوحة التحكم
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow">
+        <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    معاملات فورية وآمنة 100%
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                    منصة <span class="text-emerald-400">USDT JO</span> لبيع وشراء العملات الرقمية
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    نفذ صفقاتك بكل ثقة، بأفضل أسعار السوق، مع دعم شامل لوسائل الدفع المحلية والدولية وسرعة قياسية في التحويل.
+                </p>
+
+                <div id="customButtonsContainer" class="flex flex-wrap gap-3 pt-2"></div>
+            </div>
+
+            <!-- نموذج الطلب -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1.5 rounded-xl mb-6 border border-slate-800">
+                        <button type="button" onclick="setMode('شراء')" id="buyBtn" class="py-2.5 rounded-lg text-sm font-bold bg-emerald-500 text-slate-950 transition shadow">شراء USDT</button>
+                        <button type="button" onclick="setMode('بيع')" id="sellBtn" class="py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition">بيع USDT</button>
+                    </div>
+
+                    <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1.5">الكمية المطلوبة (USDT)</label>
+                            <div class="relative">
+                                <input type="number" id="amount" required placeholder="0.00" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-lg font-bold focus:outline-none focus:border-emerald-500 transition">
+                                <div class="absolute left-4 top-3.5 text-emerald-400 font-bold text-sm">USDT</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1.5">طريقة الدفع / الاستلام</label>
+                            <select id="paymentMethod" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition">
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1.5">معلومات الحساب أو رقم التواصل</label>
+                            <input type="text" id="contactInfo" required placeholder="رقم الهاتف أو عنوان المحفظة الخاص بك" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition">
+                        </div>
+
+                        <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-2 text-xs">
+                            <div class="flex justify-between text-slate-400">
+                                <span>السعر الأساسي:</span>
+                                <span class="text-slate-200 font-bold">1.00 USD</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400">
+                                <span>العمولة:</span>
+                                <span id="feeDisplay" class="text-amber-400 font-bold">0.00 USD</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400 border-t border-slate-800 pt-2">
+                                <span>الإجمالي النهائي:</span>
+                                <span id="totalPrice" class="text-emerald-400 font-extrabold text-sm">0.00 USD</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-extrabold py-4 rounded-xl shadow-lg shadow-emerald-500/20 hover:opacity-90 transition">
+                            إرسال الطلب الآن
+                        </button>
+                    </form>
+                </div>
+
+                <!-- صندوق متابعة حالة الطلب الأخير -->
+                <div id="userOrderStatusBox" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl hidden">
+                    <h3 class="text-sm font-bold text-emerald-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-bell"></i> آخر طلب قمت بإرساله:
+                    </h3>
+                    <div id="userOrderStatusContent" class="text-xs text-slate-300 space-y-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم البنرات -->
+        <section id="ads" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-extrabold">عروض مميزة وحملات USDT JO</h2>
+                <p class="text-slate-400 text-sm mt-1">تابع أحدث العروض والخصومات على رسوم التحويل</p>
+            </div>
+            
+            <div id="dynamicAdsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        جميع الحقوق محفوظة © 2026 - منصة USDT JO للخدمات الرقمية
+    </footer>
+
+    <script>
+        const DB_URL = "https://flora-smra-default-rtdb.europe-west1.firebasedatabase.app/";
+        let currentMode = 'شراء';
+
+        function loadSiteData() {
+            let loggedUser = localStorage.getItem('usdt_logged_user');
+            if(loggedUser) {
+                document.getElementById('authNavText').innerText = loggedUser;
+                document.getElementById('authNavBtn').href = "#";
+            }
+
+            let waNumber = localStorage.getItem('usdt_whatsapp_number') || '963900000000';
+            document.getElementById('whatsappBtn').href = `https://wa.me/${waNumber}?text=مرحباً، أود الاستفسار عن خدمات تداول USDT JO`;
+
+            let methods = JSON.parse(localStorage.getItem('usdt_payment_methods')) || ['سيريتل كاش', 'بنك بيمو', 'محفظة TRC20', 'تسليم نقدي'];
+            let select = document.getElementById('paymentMethod');
+            select.innerHTML = '';
+            methods.forEach(m => {
+                let opt = document.createElement('option');
+                opt.value = m;
+                opt.innerText = m;
+                select.appendChild(opt);
+            });
+
+            let customBtns = JSON.parse(localStorage.getItem('usdt_custom_buttons')) || [];
+            let btnContainer = document.getElementById('customButtonsContainer');
+            btnContainer.innerHTML = '';
+            customBtns.forEach(b => {
+                let a = document.createElement('a');
+                a.href = b.link || '#';
+                a.target = '_blank';
+                a.className = "bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl text-xs font-bold text-emerald-400 transition flex items-center gap-2";
+                a.innerHTML = `<i class="fa-solid fa-link"></i> ${b.name}`;
+                btnContainer.appendChild(a);
+            });
+
+            let ads = JSON.parse(localStorage.getItem('usdt_banners')) || [
+                { title: "بدون رسوم تحويل على أول معاملة لك!", desc: "ابدأ الآن وتداول بأفضل سعر صرف في السوق وبدون أي عمولات إضافية.", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800&auto=format&fit=crop", tag: "عرض خاص" },
+                { title: "سرعة فائقة في تسليم واستلام الأموال", desc: "فريق دعم فني جاهز لخدمتك وتنفيذ طلباتك خلال دقائق معدودة طوال اليوم.", img: "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=800&auto=format&fit=crop", tag: "خدمة 24/7" }
+            ];
+            let adsContainer = document.getElementById('dynamicAdsContainer');
+            adsContainer.innerHTML = '';
+            ads.forEach(ad => {
+                let div = document.createElement('div');
+                div.className = "relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl group";
+                div.innerHTML = `
+                    <img src="${ad.img}" alt="اعلان" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-full w-fit mb-2">${ad.tag || 'إعلان'}</span>
+                        <h3 class="text-lg font-bold text-white">${ad.title}</h3>
+                        <p class="text-xs text-slate-300 mt-1">${ad.desc}</p>
+                    </div>
+                `;
+                adsContainer.appendChild(div);
+            });
+
+            checkUserOrderStatus();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            const buyBtn = document.getElementById('buyBtn');
+            const sellBtn = document.getElementById('sellBtn');
+            if(mode === 'شراء') {
+                buyBtn.className = "py-2.5 rounded-lg text-sm font-bold bg-emerald-500 text-slate-950 transition shadow";
+                sellBtn.className = "py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition";
+            } else {
+                sellBtn.className = "py-2.5 rounded-lg text-sm font-bold bg-emerald-500 text-slate-950 transition shadow";
+                buyBtn.className = "py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition";
+            }
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let val = parseFloat(document.getElementById('amount').value) || 0;
+            let feePercent = parseFloat(localStorage.getItem('usdt_fee_percent')) || 0;
+            let fee = (val * feePercent) / 100;
+            let total = currentMode === 'شراء' ? (val + fee) : (val - fee);
+
+            document.getElementById('feeDisplay').innerText = fee.toFixed(2) + ' USD (' + feePercent + '%)';
+            document.getElementById('totalPrice').innerText = total.toFixed(2) + ' USD';
+        }
+
+        document.getElementById('amount').addEventListener('input', calculateTotal);
+
+        async function submitOrder(e) {
+            e.preventDefault();
+            let amount = document.getElementById('amount').value;
+            let paymentMethod = document.getElementById('paymentMethod').value;
+            let contactInfo = document.getElementById('contactInfo').value;
+            let feePercent = parseFloat(localStorage.getItem('usdt_fee_percent')) || 0;
+            let fee = (parseFloat(amount) * feePercent) / 100;
+            let finalTotal = currentMode === 'شراء' ? (parseFloat(amount) + fee) : (parseFloat(amount) - fee);
+
+            let newOrder = {
+                id: '#JO-' + Math.floor(1000 + Math.random() * 9000),
+                type: currentMode,
+                amount: amount + ' USDT',
+                payment: paymentMethod,
+                contact: contactInfo,
+                total: finalTotal.toFixed(2) + ' USD',
+                status: 'قيد الانتظار',
+                adminReply: 'بانتظار مراجعة الطلب من الإدارة...',
+                date: new Date().toLocaleString('ar-EG')
+            };
+
+            let submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "جاري إرسال الطلب للسحابة...";
+            submitBtn.disabled = true;
+
+            try {
+                let response = await fetch(`${DB_URL}/orders.json`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newOrder)
+                });
+
+                if(response.ok) {
+                    alert('تم إرسال طلبك (' + currentMode + ') عبر منصة USDT JO إلى قاعدة البيانات السحابية بنجاح!');
+                    document.getElementById('orderForm').reset();
+                    calculateTotal();
+                } else {
+                    alert('حدث خطأ أثناء إرسال الطلب.');
+                }
+            } catch (error) {
+                alert('فشل الاتصال بقاعدة البيانات السحابية.');
+            } finally {
+                submitBtn.innerText = "إرسال الطلب الآن";
+                submitBtn.disabled = false;
+            }
+        }
+
+        async function checkUserOrderStatus() {
+            try {
+                let response = await fetch(`${DB_URL}/orders.json`);
+                let data = await response.json();
+                if(data) {
+                    let keys = Object.keys(data);
+                    let latest = data[keys[keys.length - 1]];
+                    let box = document.getElementById('userOrderStatusBox');
+                    let content = document.getElementById('userOrderStatusContent');
+                    box.classList.remove('hidden');
+
+                    let badgeColor = latest.status === 'مكتمل' ? 'text-sky-400' : latest.status === 'ملغي أو مرفوض' ? 'text-red-400' : 'text-amber-400';
+                    
+                    content.innerHTML = `
+                        <div class="flex justify-between"><span>رقم الطلب:</span><span class="font-bold text-white">${latest.id}</span></div>
+                        <div class="flex justify-between"><span>النوع:</span><span class="font-bold text-white">${latest.type} (${latest.amount})</span></div>
+                        <div class="flex justify-between"><span>الحالة:</span><span class="font-bold ${badgeColor}">${latest.status}</span></div>
+                        <div class="mt-2 pt-2 border-t border-slate-800 text-emerald-300 font-semibold">رد الإدارة: ${latest.adminReply || 'لا يوجد رد بعد'}</div>
+                    `;
+                }
+            } catch(e) {}
+        }
+
+        window.onload = loadSiteData;
+    </script>
+</body>
+</html>

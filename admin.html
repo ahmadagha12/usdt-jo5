@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم السحابية - USDT JO Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Cairo', sans-serif; background-color: #0b0f19; color: #f8fafc; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <!-- القائمة الجانبية -->
+    <aside class="w-64 bg-slate-900 border-l border-slate-800 flex flex-col justify-between hidden md:flex">
+        <div>
+            <div class="p-6 border-b border-slate-800 flex items-center space-x-3 space-x-reverse">
+                <div class="bg-emerald-500 p-2 rounded-lg text-slate-950 font-bold">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+                <span class="font-extrabold text-lg text-emerald-400">USDT JO Cloud</span>
+            </div>
+            <nav class="p-4 space-y-2 text-sm font-medium">
+                <a href="#ordersSection" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <i class="fa-solid fa-list-check"></i> إدارة الطلبات السحابية
+                </a>
+                <a href="#whatsappSection" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> إعداد رقم الواتساب
+                </a>
+                <a href="#settingsSection" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-gear"></i> العمولة وطرق الدفع
+                </a>
+                <a href="#bannersSection" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-image"></i> البنرات والإعلانات
+                </a>
+            </nav>
+        </div>
+        <div class="p-4 border-t border-slate-800">
+            <a href="index.html" class="flex items-center justify-center gap-2 w-full bg-slate-800 hover:bg-slate-700 py-2.5 rounded-xl text-sm font-semibold text-slate-300 transition">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> العودة للموقع
+            </a>
+        </div>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow p-6 sm:p-10 overflow-y-auto space-y-10">
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold">لوحة تحكم منصة USDT JO (سحابي)</h1>
+                <p class="text-slate-400 text-sm mt-1">متصل بقاعدة البيانات السحابية بشكل مباشر</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-400 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                السحابة متصلة وتعمل بنجاح
+            </div>
+        </header>
+
+        <!-- إعداد الواتساب -->
+        <section id="whatsappSection" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 class="text-lg font-bold flex items-center gap-2 text-emerald-400">
+                <i class="fa-brands fa-whatsapp"></i> إعداد رقم الواتساب العائم في الموقع
+            </h2>
+            <div class="flex gap-3 max-w-xl">
+                <input type="text" id="waNumberInput" placeholder="9639xxxxxxxx" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 font-bold">
+                <button onclick="saveWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition shrink-0">حفظ الرقم</button>
+            </div>
+            <p id="waStatus" class="text-xs text-emerald-400 font-semibold"></p>
+        </section>
+
+        <!-- إعدادات العمولة وطرق الدفع -->
+        <section id="settingsSection" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-emerald-400">
+                    <i class="fa-solid fa-percent"></i> تعديل نسبة العمولة (%)
+                </h2>
+                <div class="flex gap-3">
+                    <input type="number" id="feeInput" step="0.1" placeholder="مثال: 1" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 font-bold">
+                    <button onclick="saveFee()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition shrink-0">حفظ</button>
+                </div>
+                <p id="feeStatus" class="text-xs text-emerald-400 font-semibold"></p>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-emerald-400">
+                    <i class="fa-solid fa-wallet"></i> إضافة طريقة دفع جديدة
+                </h2>
+                <div class="flex gap-3">
+                    <input type="text" id="newMethodInput" placeholder="اسم المحفظة أو البنك" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                    <button onclick="addPaymentMethod()" class="bg-sky-500 hover:bg-sky-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition shrink-0">إضافة</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <h2 class="text-lg font-bold mb-4">طرق الدفع المفعلة حالياً</h2>
+            <div id="paymentMethodsList" class="flex flex-wrap gap-3"></div>
+        </div>
+
+        <!-- إدارة البنرات -->
+        <section id="bannersSection" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 class="text-lg font-bold flex items-center gap-2 text-emerald-400">
+                <i class="fa-solid fa-image"></i> إدارة وتعديل البنرات الإعلانية
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="bannerTitle" placeholder="عنوان البنر" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                <input type="text" id="bannerTag" placeholder="التصنيف" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                <input type="text" id="bannerDesc" placeholder="الوصف القصير" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                <input type="text" id="bannerImg" placeholder="رابط صورة البنر المباشر" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+            </div>
+            <button onclick="addBanner()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-sm transition">إضافة بنر</button>
+            <div id="bannersListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2"></div>
+        </section>
+
+        <!-- جدول طلبات الزبائن السحابية -->
+        <div id="ordersSection" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                <h2 class="text-lg font-bold">إدارة الطلبات السحابية والردود</h2>
+                <div class="flex items-center gap-4">
+                    <button onclick="loadAdminData()" class="bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-semibold px-4 py-2 rounded-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate"></i> تحديث الطلبات
+                    </button>
+                    <div class="flex gap-2 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                        <button onclick="switchTab('شراء')" id="tabBuy" class="px-4 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition">طلبات الشراء</button>
+                        <button onclick="switchTab('بيع')" id="tabSell" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">طلبات البيع</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-right text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 text-xs">
+                            <th class="pb-3 px-4">رقم الطلب</th>
+                            <th class="pb-3 px-4">النوع</th>
+                            <th class="pb-3 px-4">الكمية</th>
+                            <th class="pb-3 px-4">طريقة الدفع</th>
+                            <th class="pb-3 px-4">معلومات الزبون</th>
+                            <th class="pb-3 px-4">الإجمالي</th>
+                            <th class="pb-3 px-4">رد الإدارة للزبون</th>
+                            <th class="pb-3 px-4">الحالة</th>
+                            <th class="pb-3 px-4">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody" class="divide-y divide-slate-800/60 text-slate-300">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const DB_URL = "https://flora-smra-default-rtdb.europe-west1.firebasedatabase.app/";
+        let currentAdminTab = 'شراء';
+        let cloudOrders = {};
+
+        function switchTab(tab) {
+            currentAdminTab = tab;
+            const tabBuy = document.getElementById('tabBuy');
+            const tabSell = document.getElementById('tabSell');
+            if(tab === 'شراء') {
+                tabBuy.className = "px-4 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition";
+                tabSell.className = "px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            } else {
+                tabSell.className = "px-4 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition";
+                tabBuy.className = "px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            }
+            renderOrdersTable();
+        }
+
+        function saveWhatsApp() {
+            let num = document.getElementById('waNumberInput').value.trim();
+            if(!num) return alert('الرجاء إدخال رقم واتساب');
+            localStorage.setItem('usdt_whatsapp_number', num);
+            document.getElementById('waStatus').innerText = 'تم حفظ الرقم بنجاح!';
+            setTimeout(() => { document.getElementById('waStatus').innerText = ''; }, 3000);
+        }
+
+        function saveFee() {
+            let feeVal = document.getElementById('feeInput').value;
+            if(feeVal === '') return alert('الرجاء إدخال نسبة صحيحة');
+            localStorage.setItem('usdt_fee_percent', feeVal);
+            document.getElementById('feeStatus').innerText = 'تم حفظ العمولة بنجاح!';
+            setTimeout(() => { document.getElementById('feeStatus').innerText = ''; }, 3000);
+        }
+
+        function addPaymentMethod() {
+            let val = document.getElementById('newMethodInput').value.trim();
+            if(!val) return alert('الرجاء إدخال اسم طريقة الدفع');
+            let methods = JSON.parse(localStorage.getItem('usdt_payment_methods')) || ['سيريتل كاش', 'بنك بيمو', 'محفظة TRC20', 'تسليم نقدي'];
+            if(methods.includes(val)) return alert('موجودة مسبقاً!');
+            methods.push(val);
+            localStorage.setItem('usdt_payment_methods', JSON.stringify(methods));
+            document.getElementById('newMethodInput').value = '';
+            renderPaymentMethods();
+        }
+
+        function removePaymentMethod(mName) {
+            let methods = JSON.parse(localStorage.getItem('usdt_payment_methods')) || [];
+            methods = methods.filter(m => m !== mName);
+            localStorage.setItem('usdt_payment_methods', JSON.stringify(methods));
+            renderPaymentMethods();
+        }
+
+        function renderPaymentMethods() {
+            let methods = JSON.parse(localStorage.getItem('usdt_payment_methods')) || ['سيريتل كاش', 'بنك بيمو', 'محفظة TRC20', 'تسليم نقدي'];
+            let container = document.getElementById('paymentMethodsList');
+            container.innerHTML = '';
+            methods.forEach(m => {
+                let badge = document.createElement('div');
+                badge.className = "flex items-center gap-2 bg-slate-950 border border-slate-800 px-4 py-2 rounded-xl text-xs font-semibold text-slate-200";
+                badge.innerHTML = `<span>${m}</span> <button onclick="removePaymentMethod('${m}')" class="text-red-400 ml-1"><i class="fa-solid fa-xmark"></i></button>`;
+                container.appendChild(badge);
+            });
+        }
+
+        function addBanner() {
+            let title = document.getElementById('bannerTitle').value.trim();
+            let tag = document.getElementById('bannerTag').value.trim() || 'إعلان';
+            let desc = document.getElementById('bannerDesc').value.trim();
+            let img = document.getElementById('bannerImg').value.trim();
+            if(!title || !img) return alert('أدخل العنوان ورابط الصورة');
+            let ads = JSON.parse(localStorage.getItem('usdt_banners')) || [];
+            ads.push({ title, tag, desc, img });
+            localStorage.setItem('usdt_banners', JSON.stringify(ads));
+            document.getElementById('bannerTitle').value = '';
+            document.getElementById('bannerTag').value = '';
+            document.getElementById('bannerDesc').value = '';
+            document.getElementById('bannerImg').value = '';
+            renderBannersList();
+        }
+
+        function removeBanner(idx) {
+            let ads = JSON.parse(localStorage.getItem('usdt_banners')) || [];
+            ads.splice(idx, 1);
+            localStorage.setItem('usdt_banners', JSON.stringify(ads));
+            renderBannersList();
+        }
+
+        function renderBannersList() {
+            let ads = JSON.parse(localStorage.getItem('usdt_banners')) || [
+                { title: "بدون رسوم تحويل على أول معاملة لك!", desc: "ابدأ الآن وتداول بأفضل سعر صرف في السوق وبدون أي عمولات إضافية.", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800&auto=format&fit=crop", tag: "عرض خاص" },
+                { title: "سرعة فائقة في تسليم واستلام الأموال", desc: "فريق دعم فني جاهز لخدمتك وتنفيذ طلباتك خلال دقائق معدودة طوال اليوم.", img: "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=800&auto=format&fit=crop", tag: "خدمة 24/7" }
+            ];
+            let container = document.getElementById('bannersListContainer');
+            container.innerHTML = '';
+            ads.forEach((ad, idx) => {
+                let div = document.createElement('div');
+                div.className = "bg-slate-950 border border-slate-800 p-4 rounded-xl flex items-center justify-between gap-4";
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <img src="${ad.img}" class="w-16 h-12 object-cover rounded-lg border border-slate-800">
+                        <div><p class="font-bold text-xs text-white">${ad.title}</p><span class="text-[10px] text-emerald-400">${ad.tag}</span></div>
+                    </div>
+                    <button onclick="removeBanner(${idx})" class="text-red-400 px-3 py-1.5 rounded-lg text-xs"><i class="fa-solid fa-trash"></i></button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        async function loadAdminData() {
+            let currentFee = localStorage.getItem('usdt_fee_percent');
+            if(currentFee !== null) document.getElementById('feeInput').value = currentFee;
+
+            let currentWa = localStorage.getItem('usdt_whatsapp_number');
+            if(currentWa !== null) document.getElementById('waNumberInput').value = currentWa;
+
+            renderPaymentMethods();
+            renderBannersList();
+
+            try {
+                let response = await fetch(`${DB_URL}/orders.json`);
+                let data = await response.json();
+                cloudOrders = data || {};
+                renderOrdersTable();
+            } catch (error) {
+                alert('فشل جلب الطلبات من السحابة.');
+            }
+        }
+
+        function renderOrdersTable() {
+            let tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '';
+
+            let keys = Object.keys(cloudOrders);
+            let filteredKeys = keys.filter(k => cloudOrders[k].type === currentAdminTab);
+
+            if (filteredKeys.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="text-center py-6 text-slate-500 text-xs">لا توجد طلبات ${currentAdminTab} سحابية حالياً.</td></tr>`;
+                return;
+            }
+
+            filteredKeys.forEach((key) => {
+                let order = cloudOrders[key];
+                let badgeClass = order.status === 'مكتمل' ? "bg-sky-500/10 text-sky-400 border border-sky-500/20" : 
+                                 order.status === 'ملغي أو مرفوض' ? "bg-red-500/10 text-red-400 border border-red-500/20" : 
+                                 "bg-amber-500/10 text-amber-400 border border-amber-500/20";
+
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-4 px-4 font-mono font-bold text-emerald-400">${order.id}</td>
+                    <td class="py-4 px-4 font-semibold ${order.type === 'شراء' ? 'text-emerald-400' : 'text-red-400'}">${order.type}</td>
+                    <td class="py-4 px-4 font-bold">${order.amount}</td>
+                    <td class="py-4 px-4 text-xs">${order.payment}</td>
+                    <td class="py-4 px-4 text-xs font-mono">${order.contact}</td>
+                    <td class="py-4 px-4 font-bold text-emerald-400">${order.total || order.amount}</td>
+                    <td class="py-4 px-4">
+                        <input type="text" id="reply_${key}" value="${order.adminReply || ''}" placeholder="اكتب رداً..." class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs w-48 text-white focus:outline-none focus:border-emerald-500">
+                    </td>
+                    <td class="py-4 px-4"><span class="${badgeClass} px-2.5 py-1 rounded-full text-xs font-bold">${order.status}</span></td>
+                    <td class="py-4 px-4 flex gap-1 items-center">
+                        <button onclick="updateCloudOrder('${key}', 'مكتمل')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-2.5 py-1.5 rounded-lg text-xs transition">تنفيذ</button>
+                        <button onclick="updateCloudOrder('${key}', 'ملغي أو مرفوض')" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-bold px-2.5 py-1.5 rounded-lg text-xs transition">رفض</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function updateCloudOrder(key, newStatus) {
+            let replyText = document.getElementById('reply_' + key).value;
+            let updatedData = {
+                ...cloudOrders[key],
+                status: newStatus,
+                adminReply: replyText || (newStatus === 'مكتمل' ? 'تم تنفيذ طلبك بنجاح وتحويل الأموال.' : 'عذراً، تم رفض أو إلغاء الطلب.')
+            };
+
+            try {
+                let response = await fetch(`${DB_URL}/orders/${key}.json`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedData)
+                });
+
+                if(response.ok) {
+                    alert('تم تحديث الطلب وحفظ الرد في السحابة بنجاح!');
+                    loadAdminData();
+                } else {
+                    alert('فشل التحديث في السحابة.');
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال بالإنترنت.');
+            }
+        }
+
+        window.onload = loadAdminData;
+    </script>
+</body>
+</html>

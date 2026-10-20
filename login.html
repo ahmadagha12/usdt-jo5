@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول / إنشاء حساب - USDT JO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Cairo', sans-serif; background-color: #0f172a; color: #f8fafc; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-gradient-to-tr from-emerald-500 to-teal-400 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-bolt-lightning text-slate-950 text-xl font-bold"></i>
+                </div>
+                <span class="text-xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">USDT JO</span>
+            </div>
+            <a href="index.html" class="text-xs text-slate-300 hover:text-emerald-400 transition"><i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية</a>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 max-w-md w-full shadow-2xl relative">
+            
+            <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1.5 rounded-xl mb-6 border border-slate-800">
+                <button type="button" onclick="switchAuthTab('login')" id="tabLogin" class="py-2.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition">تسجيل الدخول</button>
+                <button type="button" onclick="switchAuthTab('register')" id="tabRegister" class="py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">حساب جديد</button>
+            </div>
+
+            <!-- نموذج تسجيل الدخول -->
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                <div class="text-center mb-6">
+                    <h1 class="text-xl font-extrabold">تسجيل الدخول إلى حسابك</h1>
+                    <p class="text-xs text-slate-400 mt-1">أدخل معلوماتك لمتابعة صفقاتك</p>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">رقم الهاتف أو البريد</label>
+                    <input type="text" id="loginContact" required placeholder="09xxxxxxxx" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">كلمة المرور</label>
+                    <input type="password" id="loginPass" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                </div>
+                <button type="submit" id="loginBtn" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-extrabold py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 hover:opacity-90 transition text-sm">
+                    دخول
+                </button>
+            </form>
+
+            <!-- نموذج إنشاء حساب -->
+            <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+                <div class="text-center mb-6">
+                    <h1 class="text-xl font-extrabold">إنشاء حساب جديد</h1>
+                    <p class="text-xs text-slate-400 mt-1">انضم إلى منصة USDT JO السحابية</p>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">الاسم الكامل</label>
+                    <input type="text" id="regName" required placeholder="أدخل اسمك الكريم" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">رقم الهاتف أو البريد الإلكتروني</label>
+                    <input type="text" id="regContact" required placeholder="09xxxxxxxx" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">كلمة المرور</label>
+                    <input type="password" id="regPass" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500">
+                </div>
+                <button type="submit" id="regBtn" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-extrabold py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 hover:opacity-90 transition text-sm">
+                    إنشاء الحساب وحفظه
+                </button>
+            </form>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        جميع الحقوق محفوظة © 2026 - منصة USDT JO للخدمات الرقمية
+    </footer>
+
+    <script>
+        const DB_URL = "https://flora-smra-default-rtdb.europe-west1.firebasedatabase.app/";
+
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabLogin = document.getElementById('tabLogin');
+            const tabRegister = document.getElementById('tabRegister');
+
+            if(tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                tabLogin.className = "py-2.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition";
+                tabRegister.className = "py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                tabRegister.className = "py-2.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition";
+                tabLogin.className = "py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            let name = document.getElementById('regName').value;
+            let contact = document.getElementById('regContact').value;
+            let pass = document.getElementById('regPass').value;
+
+            let newUser = { name, contact, pass, joined: new Date().toLocaleString('ar-EG') };
+            let regBtn = document.getElementById('regBtn');
+            regBtn.innerText = "جاري إنشاء الحساب...";
+            regBtn.disabled = true;
+
+            try {
+                let response = await fetch(`${DB_URL}/users.json`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newUser)
+                });
+
+                if(response.ok) {
+                    alert('أهلاً بك ' + name + '! تم إنشاء حسابك وحفظه في السحابة بنجاح.');
+                    localStorage.setItem('usdt_logged_user', name);
+                    window.location.href = 'index.html';
+                } else {
+                    alert('حدث خطأ أثناء الاتصال بقاعدة البيانات.');
+                }
+            } catch (error) {
+                alert('فشل الاتصال بالسحابة.');
+            } finally {
+                regBtn.innerText = "إنشاء الحساب وحفظه";
+                regBtn.disabled = false;
+            }
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            let contact = document.getElementById('loginContact').value;
+            let pass = document.getElementById('loginPass').value;
+            let loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.innerText = "جاري التحقق...";
+            loginBtn.disabled = true;
+
+            try {
+                let response = await fetch(`${DB_URL}/users.json`);
+                let users = await response.json();
+                
+                let found = false;
+                let userName = '';
+
+                if(users) {
+                    for(let key in users) {
+                        if(users[key].contact === contact && users[key].pass === pass) {
+                            found = true;
+                            userName = users[key].name;
+                            break;
+                        }
+                    }
+                }
+
+                if(found) {
+                    alert('مرحباً بك مجدداً يا ' + userName + '!');
+                    localStorage.setItem('usdt_logged_user', userName);
+                    window.location.href = 'index.html';
+                } else {
+                    alert('خطأ في رقم الهاتف/البريد أو كلمة المرور.');
+                }
+            } catch (error) {
+                alert('حدث خطأ أثناء الاتصال بالخادم.');
+            } finally {
+                loginBtn.innerText = "دخول";
+                loginBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
